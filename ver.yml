@@ -1,0 +1,13 @@
+---
+- name: Get lsb_release information
+  hosts: linux
+  become: yes
+
+  tasks:
+    - name: Gather lsb_release information
+      command: lsb_release -a
+      register: lsb_info
+
+    - name: Display lsb_release information
+      debug:
+        var: lsb_info.stdout
